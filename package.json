@@ -1,6 +1,6 @@
 {
   "name": "redux-internal-state",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "Manage the internal state of your components from the redux-store",
   "main": "lib/index.js",
   "scripts": {

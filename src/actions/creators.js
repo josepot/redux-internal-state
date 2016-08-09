@@ -6,10 +6,11 @@ export const componentAction = (componentId, instanceIds, instanceAction) => ({
   type: COMPONENT_ACTION,
   payload: { componentId, instanceIds, instanceAction },
 });
-export const registerInstanceAction = (componentId, instanceId, parent) => ({
-  type: REGISTER_INSTANCE,
-  payload: { componentId, instanceId, parent },
-});
+export const registerInstanceAction =
+  (componentId, instanceId, inititalValue, parent) => ({
+    type: REGISTER_INSTANCE,
+    payload: { componentId, instanceId, inititalValue, parent },
+  });
 export const parentInstanceAction = (componentId, instanceId, parent) => ({
   type: PARENT_INSTANCE,
   payload: { componentId, instanceId, parent },

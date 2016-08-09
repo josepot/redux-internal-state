@@ -54,7 +54,9 @@ export function getComponentState(componentId, instanceId, storeState) {
 
 const stateReducer = (
   state = {},
-  { type, payload: { componentId, instanceId, instanceIds, instanceAction } = {} }
+  { type, payload: {
+    componentId, instanceAction, inititalValue, instanceId, instanceIds,
+  } = {} }
 ) => {
   const reducer = R.path([componentId, 'reducer'], clients);
   if (R.type(reducer) !== 'Function') return state;
@@ -63,7 +65,9 @@ const stateReducer = (
   switch (type) {
     case actionTypes.REGISTER_INSTANCE:
       return R.assocPath(
-        instancePath, reducer(R.path(instancePath, state), {}), state
+        instancePath,
+        inititalValue || reducer(R.path(instancePath, state), {}),
+        state
       );
     case actionTypes.COMPONENT_ACTION:
       return R.assoc(componentId, R.merge(
