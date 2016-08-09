@@ -67,7 +67,7 @@ const stateReducer = (
       );
     case actionTypes.COMPONENT_ACTION:
       return R.assoc(componentId, R.merge(
-        state.componentId || {}, R.converge(R.zipObj, [
+        state[componentId] || {}, R.converge(R.zipObj, [
           R.identity,
           R.map(id => reducer(R.path([componentId, id], state), instanceAction)),
         ])(instanceIds)
@@ -109,7 +109,7 @@ export default (key = DEFAULT_ROOT_KEY) => {
     if (!(action.type || '').startsWith('REDUX-COMPONENTS')) return state;
 
     return ({
-      state: stateReducer(state.states, action),
+      states: stateReducer(state.states, action),
       tree: treeReducer(state.tree, action),
     });
   };
