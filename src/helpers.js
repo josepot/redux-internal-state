@@ -7,6 +7,6 @@ export const getScopedDispatch = (dispatch, componentId, instanceId) => action =
 export const bindScopedActionCreators =
   (dispatch, componentId, instanceId, scopedActionCreators) => R.map(
     scopedActionCreator => (...args) => dispatch(
-      componentAction(componentId, [instanceId], scopedActionCreator(args))
+      componentAction(componentId, [instanceId], scopedActionCreator(...args))
     )
   )(scopedActionCreators);
